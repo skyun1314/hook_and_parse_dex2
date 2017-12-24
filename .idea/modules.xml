@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/JavaTest/JavaTest.iml" filepath="$PROJECT_DIR$/JavaTest/JavaTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dexpaserl/dexpaserl.iml" filepath="$PROJECT_DIR$/dexpaserl/dexpaserl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dexpasermode/dexpasermode.iml" filepath="$PROJECT_DIR$/dexpasermode/dexpasermode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hookcheck/hookcheck.iml" filepath="$PROJECT_DIR$/hookcheck/hookcheck.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hookdeviceinfo/hookdeviceinfo.iml" filepath="$PROJECT_DIR$/hookdeviceinfo/hookdeviceinfo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hook和解析dex.iml" filepath="$PROJECT_DIR$/hook和解析dex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jiemitest/jiemitest.iml" filepath="$PROJECT_DIR$/jiemitest/jiemitest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/methodhook-master/methodhook-master.iml" filepath="$PROJECT_DIR$/methodhook-master/methodhook-master.iml" />
+    </modules>
+  </component>
+</project>
