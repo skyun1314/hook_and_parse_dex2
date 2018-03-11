@@ -21,10 +21,12 @@ public class HookDevice implements IXposedHookLoadPackage {
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam mLpp) throws Throwable {
         // 判断是否是要Hook的包名
-        HTool.XHookMethod(android.net.wifi.WifiInfo.class.getName(), mLpp.classLoader, "getMacAddress", HTool.GetCatValue("wifimac"));
-       // HTool.XHookMethod(android.telephony.TelephonyManager.class.getName(), mLpp.classLoader, "getDeviceId", HTool.GetCatValue("imei"));
+        HTool.XHookMethod(android.telephony.TelephonyManager.class.getName(), mLpp.classLoader, "getDeviceId", HTool.GetCatValue("imei"));
         HTool.XHookMethod("com.android.internal.telephony.PhoneSubInfo", mLpp.classLoader, "getDeviceId", HTool.GetCatValue("imei"));
         HTool.XHookMethod("com.android.internal.telephony.IPhoneSubInfo$Stub$Proxy", mLpp.classLoader, "getDeviceId", HTool.GetCatValue("imei"));
+
+
+
         HTool.XHookMethod(android.telephony.TelephonyManager.class.getName(), mLpp.classLoader, "getSimSerialNumber", HTool.GetCatValue("simserial"));
 
 //WIFI信息
@@ -53,7 +55,7 @@ public class HookDevice implements IXposedHookLoadPackage {
         //经常用到的有 cat、getprop、ifconfig等等命令，当exec执行这些命令后 往往会返回一些手机的真实信息
         //因为框架和处理方式不同，...部分此处根据自己需求，编写重定向返回值的过程...
 
-        HTool.XHookMethod_exec(Runtime.class.getName(), mLpp.classLoader,   HTool.GetCatValue("xx"));
+       HTool.XHookMethod_exec(Runtime.class.getName(), mLpp.classLoader,   HTool.GetCatValue("xx"));
 
 
     }

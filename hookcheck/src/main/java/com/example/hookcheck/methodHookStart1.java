@@ -39,8 +39,6 @@ public class methodHookStart1 implements IXposedHookLoadPackage {
                             final ClassLoader classLoader = context.getClassLoader();
                             //下面就是强classloader修改成360的classloader就可以成功的hook了
 
-
-
                             Class<?> db = XposedHelpers.findClass("u.aly.db", classLoader);
                             Class<?> dg = XposedHelpers.findClass("u.aly.dg", classLoader);
                             Class<?> bp = XposedHelpers.findClass("u.aly.bp", classLoader);

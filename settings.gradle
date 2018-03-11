@@ -1,1 +1,1 @@
-include ':app', ':dexpaserl', ':dexpasermode', ':methodhook-master', ':jiemitest', ':JavaTest', ':hookdeviceinfo', ':hookcheck'
+include ':app', ':dexpaserl', ':dexpasermode', ':methodhook-master', ':jiemitest', ':JavaTest', ':hookdeviceinfo', ':hookcheck', ':hook_wx'

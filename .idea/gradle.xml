@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/dexpaserl" />
             <option value="$PROJECT_DIR$/dexpasermode" />
+            <option value="$PROJECT_DIR$/hook_wx" />
             <option value="$PROJECT_DIR$/hookcheck" />
             <option value="$PROJECT_DIR$/hookdeviceinfo" />
             <option value="$PROJECT_DIR$/jiemitest" />

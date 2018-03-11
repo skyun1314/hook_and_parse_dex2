@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("zkjg-lib");
     }
 
-    public  native void haha();
+    public native void haha();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,36 +54,46 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                TelephonyManager telepManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-                    Method TelephonyManager_private_getSubscriberInfo = telepManager.getClass().getDeclaredMethod("getSubscriberInfo");
-                    TelephonyManager_private_getSubscriberInfo.setAccessible(true);
+                    TelephonyManager telepManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+
+                   /* Object getSubscriberInfo = fanshe.invokeDeclaredMethod(TelephonyManager.class.getName(), "getSubscriberInfo", null, null, telepManager);
+                    Object imei1 = fanshe.invokeDeclaredMethod(getSubscriberInfo.getClass().getName(), "getDeviceId", null, null, getSubscriberInfo);
+                    Object imei3 = fanshe.invokeDeclaredMethod("com.android.internal.telephony.IPhoneSubInfo$Stub$Proxy", "getDeviceId", null, null, getSubscriberInfo);
+                    @SuppressLint("MissingPermission") String imei2 = telepManager.getDeviceId();
+*/
+                    @SuppressLint("WrongConstant") WifiManager localWifiManager = (WifiManager) getSystemService("wifi");
+                    NetworkInterface networkInterface = NetworkInterface.getByName("wlan0");
                     String mac1 = getMac();
-                    Object iphonesubinfo = TelephonyManager_private_getSubscriberInfo.invoke(telepManager);
-                    Method getDeviceId = iphonesubinfo.getClass().getDeclaredMethod("getDeviceId");
-                    getDeviceId.setAccessible(true);
+                    String mac2 = localWifiManager.getConnectionInfo().getMacAddress();
+                    String name = networkInterface.getClass().getName();
+                    byte[] mac3 = networkInterface.getHardwareAddress();
+                    //  String mac4 = Settings.Secure.getString(getContentResolver(), "bluetooth_address");
 
-                    Object deviceid = getDeviceId.invoke(iphonesubinfo);
-                @SuppressLint("MissingPermission") String imei = telepManager.getDeviceId();
+ /*
+                    String andId = Settings.Secure.getString(getContentResolver(), "android_id");
 
-                String andId = Settings.Secure.getString(getContentResolver(), "android_id");
 
-                @SuppressLint("WrongConstant") WifiManager localWifiManager = (WifiManager) getSystemService("wifi");
-                String Wifymac = localWifiManager.getConnectionInfo().getMacAddress();
+
 
                     String serial1 = Build.SERIAL;
 
-                    NetworkInterface networkInterface = NetworkInterface.getByName("wlan0");
-                    byte[] mac = networkInterface.getHardwareAddress();
 
-                    t1.setText("android_id:" + andId +
-                            "\nimei:" + deviceid +
-                            "\nimei:" + imei +
-                            "\nMac:" + Wifymac+
-                            "\nmac1:" + mac1+
-                            "\nserial1:" + serial1+"");
+                   */
+
+                    t1.setText(
+                            /*"\nimei2:" + imei2 +
+                            "\nimei1:" + imei1 +
+                            "\nimei3:" + imei3 +*/
+                            "\nMac1:" + mac1 +
+                                    "\nmac2:" + mac2 +
+                                    "\nmac3:" + HTool.parseByte2HexStr(mac3)
+                                   // "\nmac4:" + mac4
+                            /*        +
+                            "\nserial1:" + serial1 + "\nandroid_id:" + andId */
+                    );
 
 
-                    haha();
+                     haha();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -96,22 +106,21 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 获取手机的MAC地址
+     *
      * @return
      */
-    public static String getMac(){
-        String str="";
-        String macSerial="";
+    public static String getMac() {
+        String str = "";
+        String macSerial = "";
         try {
             Process pp = Runtime.getRuntime().exec(
                     "cat /sys/class/net/wlan0/address ");
 
-
-            BufferedReader br=new BufferedReader(new InputStreamReader(pp.getInputStream()));
-            String line=null;
-            while ((line=br.readLine())!=null){
+            BufferedReader br = new BufferedReader(new InputStreamReader(pp.getInputStream()));
+            String line = null;
+            while ((line = br.readLine()) != null) {
                 return line.trim();
             }
-
 
 
         } catch (Exception ex) {
@@ -129,12 +138,14 @@ public class MainActivity extends AppCompatActivity {
         }
         return macSerial;
     }
+
     public static String loadFileAsString(String fileName) throws Exception {
         FileReader reader = new FileReader(fileName);
         String text = loadReaderAsString(reader);
         reader.close();
         return text;
     }
+
     public static String loadReaderAsString(Reader reader) throws Exception {
         StringBuilder builder = new StringBuilder();
         char[] buffer = new char[4096];
